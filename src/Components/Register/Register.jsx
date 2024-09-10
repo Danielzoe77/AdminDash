@@ -50,7 +50,7 @@ const Register = () => {
     setErrors(Validation(femail, fuserName, fpassword));
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/users/register",
+        "https://admin-dash-mauve.onrender.com/register",
         {
           email: femail.email,
           username: fuserName.username,

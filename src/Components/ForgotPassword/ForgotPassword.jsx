@@ -33,7 +33,9 @@ const ForgotPassword = () => {
     e.preventDefault();
     setErrors(Valid(femail));
     try {
-      const response = await axios.post("http://localhost:3001/api/users/forgotPassword", {
+     // const response = await axios.post("http://localhost:3001/api/users/forgotPassword", {
+          const response = await axios.post("https://admin-dash-mauve.onrender.com/forgotPassword", {
+    
         // email:email,
         email: femail.email
         

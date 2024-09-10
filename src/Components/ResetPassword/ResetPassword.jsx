@@ -35,7 +35,7 @@ const ResetPassword = () => {
     setErrors(Validation(fpassword));
     
     try {
-      const  response = await axios.post("http://localhost:3001/api/users/resetPassword/"+token, {
+      const  response = await axios.post("https://admin-dash-mauve.onrender.com/resetPassword/"+token, {
         // email:email,
         password:fpassword.password,
         
