@@ -72,7 +72,10 @@ const Register = () => {
     } catch (error) {
       if(error.response.data.error==="email already exists"){
         setMessage("Email already exists, please login");
-      }else{
+      }if(error.response.data.error==="Password must be up to 8 characters"){
+        setMessage("Password must be up to 8 characters");
+      }
+      else{
         console.error(error);
         setMessage("User creation failed.");
       }
