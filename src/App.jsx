@@ -15,8 +15,8 @@ const isLoggedIn = window.localStorage.getItem("token");
     <BrowserRouter>
       <div>
         <Routes>
-        <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+        {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />       
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword/:token" element={<ResetPassword />} />
