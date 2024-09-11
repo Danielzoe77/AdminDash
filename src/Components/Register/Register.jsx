@@ -61,7 +61,7 @@ const Register = () => {
 
       if (response.status === 201) {
         // User created successfully
-        navigateTo("/login");
+        navigateTo("/");
         setEmail("");
         setUserName("");
         setPassword("");
