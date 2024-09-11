@@ -39,7 +39,7 @@ const Login = () => {
     e.preventDefault();
     setErrors(Validate(femail, fpassword));
     try {
-      const response = await axios.post("https://admin-dash-mauve.onrender.com/login", {
+      const response = await axios.post("https://admin-dash-mauve.onrender.com/api/users/login", {
         email:femail.email,
         password:fpassword.password,
       }
