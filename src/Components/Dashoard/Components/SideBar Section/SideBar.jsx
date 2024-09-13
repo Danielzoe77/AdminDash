@@ -18,7 +18,10 @@ const navigateTo = useNavigate()
 
 axios.defaults.withCredentials = true;
 const handleLogout = () => {
-  axios.get("http://localhost:3001/api/users/logout")
+  axios.get(
+   // "http://localhost:3001/api/users/logout",
+    "https://admin-dash-mauve.onrender.com/api/users/logout"
+  )
     .then((response) => {
       window.localStorage.removeItem("token");
       navigateTo('/')
@@ -97,10 +100,10 @@ const handleLogout = () => {
             </a>
           </li>
 
-          <li className="listItem">
+          <li className="listItem" onClick={handleLogout}>
             <a href="#"  className="menuLink flex">
               <IoMdLogOut className="icon" />
-              <span className="smallText" onClick={handleLogout} >Logout</span>
+              <span className="smallText"  >Logout</span>
             </a>
           </li>
         </ul>

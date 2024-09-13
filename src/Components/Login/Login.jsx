@@ -39,7 +39,11 @@ const Login = () => {
     e.preventDefault();
     setErrors(Validate(femail, fpassword));
     try {
-      const response = await axios.post("https://admin-dash-mauve.onrender.com/api/users/login", {
+      const response = await axios.post(
+        "https://admin-dash-mauve.onrender.com/api/users/login",
+       // "http://localhost:3001/api/users/login",
+        
+        {
         email:femail.email,
         password:fpassword.password,
       }
@@ -59,8 +63,14 @@ const Login = () => {
         setMessage("Invalid request. Please check your input.")
       }
     } catch (error) {
-      console.error(error);
-      setMessage("User creation failed.");
+      if(error.response.data.error==="please enter your email"){
+        setMessage("please enter your email");
+      }
+      if(error.response.data.error==="please enter your password"){
+        setMessage("please enter your password");
+      }
+      // console.error(error);
+      // setMessage("User creation failed.");
       setTimeout(() => {
         setMessage()
       }, 4000);

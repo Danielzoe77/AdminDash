@@ -51,6 +51,7 @@ const Register = () => {
     try {
       const response = await axios.post(
         "https://admin-dash-mauve.onrender.com/api/users/register",
+        // "http://localhost:3001/api/users/register",
         {
           email: femail.email,
           username: fuserName.username,
@@ -59,13 +60,13 @@ const Register = () => {
       );
       // console.log(response.data);
 
-      if (response.status === 201) {
+      if (response.data.status === 201) {
         // User created successfully
         navigateTo("/");
         setEmail("");
         setUserName("");
         setPassword("");
-      } else if (response.status === 400) {
+      } else if (response.data.status === 400) {
         // Bad request error
         setMessage("Invalid request. Please check your input.");
       }
@@ -75,13 +76,17 @@ const Register = () => {
       }if(error.response.data.error==="Password must be up to 8 characters"){
         setMessage("Password must be up to 8 characters");
       }
+      if(error.response.data.error==="please enter your username"){
+        setMessage("please enter your username");
+      }
       if(error.response.data.error==="please enter your password"){
         setMessage("please enter your password");
       }
-      else{
-        console.error(error);
-        setMessage("User creation failed.");
-      }
+      
+      // else{
+      //   console.error(error);
+      //   setMessage("User creation failed.");
+      // }
      
       setTimeout(() => {
         setMessage();
@@ -104,7 +109,7 @@ const Register = () => {
           </div>
           <div className="footerDiv flex">
             <span className="text">Already have an account?</span>
-            <Link to="/login">
+            <Link to="/">
               <button className="btn">Login</button>
             </Link>
           </div>
@@ -158,6 +163,7 @@ const Register = () => {
                   // (setEmail(e.target.value))
                   // }}
                   onChange={handleInput}
+                  
                 />
               </div>
               {errors.email && (

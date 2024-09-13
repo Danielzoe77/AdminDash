@@ -12,9 +12,7 @@ import { BsArrowRightShort } from "react-icons/bs";
 import axios from "axios";
 
 const Top =  () => {
-  // const token = localStorage.getItem("token");
-  // const decodedToken = JSON.parse(atob(token.split(".")[1]));
-  // const username = decodedToken.username;
+ 
   const [username, setUsername] = useState('');
   const [token, setToken] = useState(localStorage.getItem("token"));
 
