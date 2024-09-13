@@ -57,7 +57,7 @@ const Register = () => {
           password: fpassword.password,
         }
       );
-      console.log(response.data);
+      // console.log(response.data);
 
       if (response.status === 201) {
         // User created successfully
@@ -74,6 +74,9 @@ const Register = () => {
         setMessage("Email already exists, please login");
       }if(error.response.data.error==="Password must be up to 8 characters"){
         setMessage("Password must be up to 8 characters");
+      }
+      if(error.response.data.error==="please enter your password"){
+        setMessage("please enter your password");
       }
       else{
         console.error(error);

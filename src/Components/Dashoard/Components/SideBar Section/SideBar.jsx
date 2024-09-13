@@ -21,7 +21,7 @@ const handleLogout = () => {
   axios.get("http://localhost:3001/api/users/logout")
     .then((response) => {
       window.localStorage.removeItem("token");
-      navigateTo('/login')
+      navigateTo('/')
     //  if (response.data.status) {
     //     navigateTo('/login')
 
