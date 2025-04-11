@@ -16,18 +16,41 @@ const Top =  () => {
   const [username, setUsername] = useState('');
   const [token, setToken] = useState(localStorage.getItem("token"));
 
+  // useEffect(() => {
+  //   if (token) {
+  //     const decodedToken = JSON.parse(atob(token.split(".")[1]));
+  //     setUsername(decodedToken.username);
+  //   }
+  // }, [token]);
+
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log("Raw token:", token); // 🐛 Log raw token
+  
     if (token) {
-      const decodedToken = JSON.parse(atob(token.split(".")[1]));
-      setUsername(decodedToken.username);
+      try {
+        const payloadBase64 = token.split(".")[1];
+        const decoded = JSON.parse(atob(payloadBase64));
+        console.log("Decoded token payload:", decoded); // 🐛 Log decoded token
+  
+        if (decoded?.username) {
+          setUsername(decoded.username);
+        } 
+      } catch (error) {
+        console.error("Failed to decode token:", error);
+      }
     }
-  }, [token]);
+  }, []);
+  
+
   return (
     <div className='topSection'>
       <div className="headerSection flex">
         <div className="title">
           <h1>Welcome  to Super blog</h1>
-          <p>Hello ,<strong>{username.toUpperCase()}</strong>, you are welcome Back!</p>
+          {/* <p>Hello ,<strong>{username.toUpperCase()}</strong>, you are welcome Back!</p> */}
+          <p>Hello, <strong>{username ? username.toUpperCase() : 'User'}</strong>, you are welcome back!</p>
+
         </div>
 
         <div className="searchBar flex">
